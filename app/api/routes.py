@@ -5,9 +5,12 @@ from app.application.services import analyze_file
 router = APIRouter()
 
 @router.post("/analyze")
-async def analyze(
-    uploaded_file: Optional[UploadFile] = File(None),
-    text: Optional[str] = Form(None)
-):
-    result = await analyze_file(uploaded_file, text)
+async def analyze(uploaded_file: UploadFile = File(None), text: str = Form(None)):
+    if uploaded_file:
+        result = await analyze_file(uploaded_file)
+    elif text:
+        result = {"text_analysis": f"Texto analizado: {text}"}
+    else:
+        return {"error": "No file or text provided"}
+    
     return result
