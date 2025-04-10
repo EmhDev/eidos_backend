@@ -7,7 +7,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), 'app'))
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from api.routes import router  # Esto debería funcionar ahora
+from api import router  # Esto debería funcionar ahora
 
 app = FastAPI()
 
