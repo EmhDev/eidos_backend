@@ -14,3 +14,7 @@ async def analyze(uploaded_file: UploadFile = File(None), text: str = Form(None)
         return {"error": "No file or text provided"}
     
     return result
+
+@router.get("/")
+def read_root():
+    return {"message": "Hello, World!"}
