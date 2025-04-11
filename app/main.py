@@ -2,13 +2,9 @@
 import sys
 import os
 
-# Aseguramos que el directorio 'app' esté en el PYTHONPATH
-sys.path.append(os.path.join(os.path.dirname(__file__), 'app'))
-
-
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app import router  
+from app.api.routes import router
 
 app = FastAPI()
 
