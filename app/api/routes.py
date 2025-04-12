@@ -1,20 +1,7 @@
-from fastapi import APIRouter, File, UploadFile, Form
-from typing import Optional
-from app.application.services import analyze_file
-
-router = APIRouter()
+from fastapi import UploadFile, File, Form
+from app.application.services import analizar_con_red_neuronal
 
 @router.post("/analyze")
-async def analyze(uploaded_file: UploadFile = File(None), text: str = Form(None)):
-    if uploaded_file:
-        result = await analyze_file(uploaded_file)
-    elif text:
-        result = {"text_analysis": f"Texto analizado: {text}"}
-    else:
-        return {"error": "No file or text provided"}
-    
+async def analyze(text: str = Form(...), file: UploadFile = File(None)):
+    result = analizar_con_red_neuronal(text, file)
     return result
-
-@router.get("/")
-def read_root():
-    return {"message": "Hello, World!"}

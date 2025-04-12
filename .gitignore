@@ -1,0 +1,50 @@
+# Entornos virtuales
+.venv/
+venv/
+ENV/
+env/
+
+# Archivos de Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Archivos de configuración y logs
+*.log
+*.env
+.env.*
+config.ini
+
+# IDEs
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Cachés
+*.egg-info/
+.eggs/
+.cache/
+*.bak
+
+# Archivos de tests y cobertura
+htmlcov/
+.tox/
+coverage.xml
+.nox/
+.pytest_cache/
+
+# Archivos de construcción
+build/
+dist/
+
+# Mongo dumps
+dump/
+
+# Archivos de Render u otros servicios temporales
+render.yaml
