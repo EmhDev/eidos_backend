@@ -11,7 +11,7 @@ app = FastAPI()
 # Configuración de CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "https://cleanmind-1.onrender.com"],  # Agrega la URL de tu frontend aquí
+    allow_origins=["http://localhost:5173"],  # ⚠️ el origen de tu frontend
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

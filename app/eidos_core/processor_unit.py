@@ -1,3 +1,4 @@
 # Procesador inicial de evaluación simbólica
-def process(data):
-    return f"Procesado básico: {data}"
+def procesar_input(data):
+    # Por ahora solo simula un proceso básico
+    return {"processed": f"Procesado: {data}"}

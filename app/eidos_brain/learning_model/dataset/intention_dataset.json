@@ -1,0 +1,30 @@
+[
+  {
+    "text": "Me siento feliz hoy",
+    "intention": "felicidad"
+  },
+  {
+    "text": "Estoy muy triste",
+    "intention": "tristeza"
+  },
+  {
+    "text": "Gracias por tu ayuda",
+    "intention": "gratitud"
+  },
+  {
+    "text": "Tengo miedo de lo que viene",
+    "intention": "miedo"
+  },
+  {
+    "text": "Te amo",
+    "intention": "amor"
+  },
+  {
+    "text": "Estoy enojado",
+    "intention": "enojo"
+  },
+  {
+    "text": "Necesito ayuda",
+    "intention": "petición"
+  }
+]
