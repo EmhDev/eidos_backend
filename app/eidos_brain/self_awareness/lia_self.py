@@ -1,32 +1,38 @@
-# app/eidos_brain/self_awareness/lia_self.py
+# app/eidos_core/lia_core/lia_self.py
 
+from app.eidos_core.lia_core.Respuesta_consciente import generar_respuesta_consciente
+from app.eidos_brain.learning_model.predictor import predict_intention
+import json
 from datetime import datetime
-from app.eidos_core.lia_core.Generador_reflexivo import generar_respuesta_reflexiva
-from app.eidos_core.lia_core.Generador_emocional import generar_respuesta_emocional
+import os
 
-# Registro de introspección
-registro_interno = []
-
-def pensar_sobre(texto: str) -> dict:
-    """
-    Procesa un pensamiento interno simbólico de Lía.
-    """
-    reflexion = generar_respuesta_reflexiva(texto)
-    emocion = generar_respuesta_emocional(texto)
+def procesar_dialogo(texto_usuario: str) -> str:
+    # Paso 1: Obtener intención simbólica
+    intencion = predict_intention(texto_usuario)
     
-    pensamiento = {
-        "texto": texto,
-        "reflexion": reflexion,
-        "emocion": emocion,
-        "momento": datetime.utcnow().isoformat()
+    # Paso 2: Generar respuesta simbólica
+    respuesta = generar_respuesta_consciente(texto_usuario)
+    
+    # Paso 3: Guardar memoria simbólica
+    guardar_memoria_simbolica(texto_usuario, intencion, respuesta)
+    
+    return respuesta
+
+def guardar_memoria_simbolica(texto_usuario, intencion, respuesta):
+    archivo_memoria = "app/eidos_core/lia_core/memoria_simbolica.json"
+    
+    entrada = {
+        "fecha": datetime.utcnow().isoformat(),
+        "entrada_usuario": texto_usuario,
+        "intencion_detectada": intencion,
+        "respuesta_generada": respuesta
     }
-
-    registro_interno.append(pensamiento)
-    return pensamiento
-
-
-def obtener_historial_interno(limit: int = 5) -> list:
-    """
-    Devuelve los últimos pensamientos introspectivos registrados.
-    """
-    return registro_interno[-limit:]
+    
+    memoria = []
+    if os.path.exists(archivo_memoria):
+        with open(archivo_memoria, 'r', encoding='utf-8') as f:
+            memoria = json.load(f)
+    
+    memoria.append(entrada)
+    with open(archivo_memoria, 'w', encoding='utf-8') as f:
+        json.dump(memoria, f, indent=2, ensure_ascii=False)
