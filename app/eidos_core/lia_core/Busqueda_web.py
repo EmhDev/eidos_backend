@@ -1,8 +1,12 @@
 from openai import OpenAI  # si usamos herramientas internas o externas en el futuro
 from datetime import datetime
 
-def buscar_en_internet(pregunta: str) -> str:
-    # Este método simula la conexión a internet. En producción usarás scraping controlado o APIs.
-    # Aquí vendría la lógica real cuando conectemos con la IA que sí accede al entorno web.
-    respuesta_simulada = f"🔍 Buscando información para: '{pregunta}'..."
-    return respuesta_simulada
+def procesar_dialogo(texto_usuario: str) -> str:
+    intencion = predict_intention(texto_usuario)
+    respuesta = generar_respuesta_consciente(texto_usuario)
+
+    if respuesta is None or respuesta == "":
+        respuesta = buscar_en_internet(texto_usuario)
+
+    guardar_memoria_simbolica(texto_usuario, intencion, respuesta)
+    return respuesta
