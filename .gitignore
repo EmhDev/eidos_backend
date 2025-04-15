@@ -48,3 +48,6 @@ dump/
 
 # Archivos de Render u otros servicios temporales
 render.yaml
+
+# Aprendizaje autónomo
+learning_queue.json
