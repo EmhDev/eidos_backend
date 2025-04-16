@@ -5,7 +5,7 @@ import os
 from datetime import datetime
 from app.eidos_core.lia_core.Respuesta_consciente import generar_respuesta_consciente
 from app.eidos_brain.learning_model.predictor import predict_intention
-from app.web_search.buscador_google import buscar_en_google  # Lo conectaremos con un módulo externo de búsqueda
+from app.eidos_core.lia_core.web_search.Busqueda_web import buscar_en_google  # Lo conectaremos con un módulo externo de búsqueda
 
 
 def procesar_dialogo_con_busqueda(texto_usuario: str) -> str:
