@@ -25,11 +25,3 @@ def buscar_en_google(pregunta: str) -> str:
  
 
  
-def procesar_dialogo_con_busqueda(texto_usuario: str) -> str: 
-    respuesta = procesar_dialogo(texto_usuario) 
- 
-    if "?" in texto_usuario or texto_usuario.lower().startswith("qué") or texto_usuario.lower().startswith("cómo"): 
-        resultado_web = buscar_en_google(texto_usuario) 
-        respuesta += f"\n\n{resultado_web}" 
- 
-    return respuesta

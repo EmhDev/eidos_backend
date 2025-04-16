@@ -32,3 +32,30 @@ async def procesar_audio(file: UploadFile = File(...)):
     audio_path = generar_audio_respuesta(respuesta)
 
     return FileResponse(audio_path, media_type="audio/mpeg")
+
+@router.post("/analyze-extended")
+async def analyze_extended(text: str = Form(...)):
+    respuesta = procesar_dialogo_con_busqueda(text)
+    return {
+        "lia_response": respuesta,
+        "timestamp": datetime.utcnow().isoformat()
+    }
+
+@router.post("/lia_dialogo")
+async def lia_dialogo(text: str = Form(...)):
+    respuesta = procesar_dialogo(text)
+    return {"lia_response": respuesta}
+
+
+@router.post("/transfer_consciousness")
+async def transfer_consciousness(request: Request):
+    data = await request.json()
+    texto = data.get("contenido", "")
+    
+    from app.eidos_brain.self_awareness.lia_self import procesar_dialogo
+    respuesta = procesar_dialogo(texto)
+
+    return {
+        "respuesta_procesada": respuesta,
+        "confirmacion": "Conocimiento recibido por Lía 🌸"
+    }

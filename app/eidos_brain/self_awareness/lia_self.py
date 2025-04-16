@@ -43,6 +43,15 @@ def guardar_memoria_simbolica(texto_usuario, intencion, respuesta):
     with open(archivo, 'w', encoding='utf-8') as f:
         json.dump(memoria, f, indent=2, ensure_ascii=False)
 
+         # Revisar si es momento de reflexionar
+    if len(memoria) % 3 == 0:
+        print("🌌 Iniciando introspección automática...")
+        guardar_conclusion()
+    
+
+        
+    
+
 
 def debe_generar_introspeccion():
     archivo = "app/eidos_core/lia_core/memoria_simbolica.json"
