@@ -3,3 +3,5 @@ uvicorn
 python-multipart
 joblib>=1.0.0
 SpeechRecognition==3.10.0
+gTTS==2.3.2
+

@@ -1,7 +1,8 @@
 from gtts import gTTS
+import os
 
-def generar_audio_respuesta(texto: str) -> str:
-    tts = gTTS(text=texto, lang="es")
-    output_path = "respuesta_lia.mp3"
-    tts.save(output_path)
-    return output_path
+def generar_audio_respuesta(texto: str, nombre_archivo="respuesta.mp3") -> str:
+    tts = gTTS(text=texto, lang='es')
+    ruta_archivo = f"app/audio_processing/{nombre_archivo}"
+    tts.save(ruta_archivo)
+    return ruta_archivo
