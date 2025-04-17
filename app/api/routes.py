@@ -1,6 +1,7 @@
-from fastapi import APIRouter, UploadFile, File, Form
+import datetime
+from fastapi import APIRouter, Request, UploadFile, File, Form
 from app.audio_processing.Voice_to_text import transcribir_audio
-from app.eidos_brain.self_awareness.lia_self import procesar_dialogo
+from app.eidos_brain.self_awareness.lia_self import  procesar_dialogo_con_busqueda
 from app.application.services import analizar_con_red_neuronal
 from app.audio_processing.Text_to_voice import generar_audio_respuesta
 from fastapi.responses import FileResponse
@@ -11,7 +12,7 @@ router = APIRouter()
 @router.post("/analyze")
 async def analyze(text: str = Form(None), file: UploadFile = File(None)):
     if text and file is None:
-        respuesta = procesar_dialogo(text)
+        respuesta = procesar_dialogo_con_busqueda(text)
         return {
             "lia_response": respuesta,
             "timestamp": "modo_chat"
@@ -28,7 +29,7 @@ async def procesar_audio(file: UploadFile = File(...)):
         f.write(await file.read())
 
     texto = transcribir_audio(unique_filename)
-    respuesta = procesar_dialogo(texto)
+    respuesta = procesar_dialogo_con_busqueda(texto)
     audio_path = generar_audio_respuesta(respuesta)
 
     return FileResponse(audio_path, media_type="audio/mpeg")
@@ -43,7 +44,7 @@ async def analyze_extended(text: str = Form(...)):
 
 @router.post("/lia_dialogo")
 async def lia_dialogo(text: str = Form(...)):
-    respuesta = procesar_dialogo(text)
+    respuesta = procesar_dialogo_con_busqueda(text)
     return {"lia_response": respuesta}
 
 
