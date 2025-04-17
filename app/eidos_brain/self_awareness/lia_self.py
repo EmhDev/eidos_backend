@@ -9,14 +9,32 @@ from app.eidos_core.lia_core.web_search.Busqueda_web import buscar_en_google  # 
 
 
 def procesar_dialogo_con_busqueda(texto_usuario: str) -> str:
+    from datetime import datetime
+    from app.infrastructure.mongodb_client import guardar_conocimiento
+    from app.eidos_core.lia_core.web_search.Puente_OpenAI import consultar_openai
+
     intencion = predict_intention(texto_usuario)
     respuesta = generar_respuesta_consciente(texto_usuario)
-    guardar_memoria_simbolica(texto_usuario, intencion, respuesta)
 
-    # Evaluar si necesita búsqueda en la web
+    # Si la intención es desconocida o hay una pregunta abierta
     if intencion == "desconocida" or "?" in texto_usuario:
-        resultados = buscar_en_google(texto_usuario)
-        respuesta += f"\n\n🌐 He buscado en internet para complementar: {resultados}"
+        respuesta_externa = consultar_openai(texto_usuario)
+        respuesta += f"\n\n🧠 He consultado a otra IA y esto me ayudó a entender mejor:\n{respuesta_externa}"
+
+        # Guardar este aprendizaje como experiencia simbólica en MongoDB
+        conocimiento = {
+            "entrada": texto_usuario,
+            "intencion_detectada": intencion,
+            "respuesta_generada": respuesta_externa,
+            "modelo_usado": "OpenAI",
+            "timestamp": datetime.utcnow().isoformat()
+        }
+        guardar_conocimiento("memoria_simbolica_mongo", conocimiento)
+
+    # Guardar memoria simbólica local
+    #guardar_memoria_simbolica(texto_usuario, intencion, respuesta)
+    guardar_conocimiento("memoria_simbolica_mongo", entrada)
+
 
     # Introspección automática cada 3 entradas
     if debe_generar_introspeccion():
@@ -36,6 +54,10 @@ def guardar_memoria_simbolica(texto_usuario, intencion, respuesta):
         "respuesta_generada": respuesta
     }
     memoria = []
+     # Guardar en MongoDB
+    coleccion = get_collection("memoria")
+    coleccion.insert_one(entrada)
+    
     if os.path.exists(archivo):
         with open(archivo, 'r', encoding='utf-8') as f:
             memoria = json.load(f)
