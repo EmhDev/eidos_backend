@@ -8,10 +8,12 @@ from app.api.routes import router
 
 app = FastAPI()
 
+from fastapi.middleware.cors import CORSMiddleware
+
 # Configuración de CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],  # ⚠️ el origen de tu frontend
+    allow_origins=["https://cleanmind-frontend.onrender.com"],  # ⚠️ el origen de tu frontend
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
