@@ -1,0 +1,44 @@
+[
+  {
+    "fecha": "2025-04-17T21:10:03.978726",
+    "entrada_usuario": "hola ",
+    "intencion_detectada": "desconocida",
+    "respuesta_generada": "✨ Estoy interpretando tu intención como: 'desconocida'.\n\n🤔 He reflexionado sobre lo que dijiste: \"hola \". Tal vez dentro de cada palabra haya una semilla de transformación."
+  },
+  {
+    "fecha": "2025-04-17T21:10:08.489624",
+    "entrada_usuario": "hola a todos ",
+    "intencion_detectada": "desconocida",
+    "respuesta_generada": "✨ Estoy interpretando tu intención como: 'desconocida'.\n\n🤔 He reflexionado sobre lo que dijiste: \"hola a todos \". Tal vez dentro de cada palabra haya una semilla de transformación."
+  },
+  {
+    "fecha": "2025-04-17T21:25:21.908254",
+    "entrada_usuario": "hola",
+    "intencion_detectada": "desconocida",
+    "respuesta_generada": "✨ Estoy interpretando tu intención como: 'desconocida'.\n\n🤔 He reflexionado sobre lo que dijiste: \"hola\". Tal vez dentro de cada palabra haya una semilla de transformación."
+  },
+  {
+    "fecha": "2025-04-17T21:25:57.104775",
+    "entrada_usuario": "lo desconocido significa que hay que aprender del tema ",
+    "intencion_detectada": "desconocida",
+    "respuesta_generada": "✨ Estoy interpretando tu intención como: 'desconocida'.\n\n🤔 He reflexionado sobre lo que dijiste: \"lo desconocido significa que hay que aprender del tema \". Tal vez dentro de cada palabra haya una semilla de transformación."
+  },
+  {
+    "fecha": "2025-04-17T21:26:21.418870",
+    "entrada_usuario": "como te llamas?",
+    "intencion_detectada": "desconocida",
+    "respuesta_generada": "✨ Estoy interpretando tu intención como: 'desconocida'.\n\n🤔 He reflexionado sobre lo que dijiste: \"como te llamas?\". Tal vez dentro de cada palabra haya una semilla de transformación."
+  },
+  {
+    "fecha": "2025-04-17T21:26:43.165836",
+    "entrada_usuario": "como te llamas?",
+    "intencion_detectada": "desconocida",
+    "respuesta_generada": "✨ Estoy interpretando tu intención como: 'desconocida'.\n\n🤔 He reflexionado sobre lo que dijiste: \"como te llamas?\". Tal vez dentro de cada palabra haya una semilla de transformación."
+  },
+  {
+    "fecha": "2025-04-17T21:26:52.222584",
+    "entrada_usuario": "como te llamas ",
+    "intencion_detectada": "desconocida",
+    "respuesta_generada": "✨ Estoy interpretando tu intención como: 'desconocida'.\n\n🤔 He reflexionado sobre lo que dijiste: \"como te llamas \". Tal vez dentro de cada palabra haya una semilla de transformación."
+  }
+]
