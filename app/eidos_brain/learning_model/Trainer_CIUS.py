@@ -5,6 +5,9 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 from app.eidos_brain.learning_model.model_utils import get_dataset_path, get_model_path
 
+#CIUS
+#CLASIFICADOR DE INTENCIONES USANDO SKLEARN 
+
 def load_dataset():
     with open(get_dataset_path(), 'r', encoding='utf-8') as f:
         data = json.load(f)

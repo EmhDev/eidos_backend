@@ -6,6 +6,9 @@ from app.application.services import analizar_con_red_neuronal
 from app.audio_processing.Text_to_voice import generar_audio_respuesta
 from fastapi.responses import FileResponse
 from app.eidos_brain.self_awareness.Lia_reponse_engine import generar_respuesta_entrenada
+from fastapi import APIRouter, Request
+from app.eidos_brain.self_awareness.Lia_response_engine_GRSCUP import generar_respuesta_lia
+
 import uuid
 
 router = APIRouter()
@@ -72,4 +75,17 @@ async def responder_entrenada(request: Request):
         "respuesta": respuesta,
         "modelo": "lia_model.pth",
         "mensaje_original": entrada
+    }
+
+
+@router.post("/lia/respond_grscup")
+async def responder_grscup(request: Request):
+    data = await request.json()
+    texto_usuario = data.get("mensaje", "")
+    
+    respuesta = generar_respuesta_lia(texto_usuario)
+    
+    return {
+        "respuesta": respuesta,
+        "modelo": "lia_model_GRSCUP_v1"
     }
