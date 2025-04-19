@@ -5,6 +5,7 @@ from app.eidos_brain.self_awareness.lia_self import  procesar_dialogo_con_busque
 from app.application.services import analizar_con_red_neuronal
 from app.audio_processing.Text_to_voice import generar_audio_respuesta
 from fastapi.responses import FileResponse
+from app.eidos_brain.self_awareness.Lia_reponse_engine import generar_respuesta_entrenada
 import uuid
 
 router = APIRouter()
@@ -59,4 +60,16 @@ async def transfer_consciousness(request: Request):
     return {
         "respuesta_procesada": respuesta,
         "confirmacion": "Conocimiento recibido por Lía 🌸"
+    }
+
+@router.post("/lia/respond_trained")
+async def responder_entrenada(request: Request):
+    data = await request.json()
+    entrada = data.get("mensaje", "")
+    
+    respuesta = generar_respuesta_entrenada(entrada)
+    return {
+        "respuesta": respuesta,
+        "modelo": "lia_model.pth",
+        "mensaje_original": entrada
     }
