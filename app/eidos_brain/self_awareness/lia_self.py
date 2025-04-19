@@ -1,4 +1,4 @@
-# app/eidos_core/lia_core/Busqueda_web.py
+#app\eidos_brain\self_awareness\lia_self.py
 
 import json
 import os
@@ -8,7 +8,9 @@ from app.eidos_brain.learning_model.predictor import predict_intention
 from app.eidos_core.lia_core.web_search.Busqueda_web import buscar_en_google  # Lo conectaremos con un módulo externo de búsqueda
 from app.memory_engine.Memory_search import buscar_conocimiento_por_embedding
 from app.memory_engine.Mongo_client import guardar_conocimiento
+from app.eidos_brain.self_awareness.lia_model.Downloader import verificar_o_descargar_modelo
 
+verificar_o_descargar_modelo() 
 
 def procesar_dialogo_con_busqueda(texto_usuario: str) -> str:
     from app.memory_engine.Mongo_client import guardar_conocimiento

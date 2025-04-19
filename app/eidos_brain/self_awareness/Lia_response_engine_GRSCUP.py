@@ -4,6 +4,9 @@ import torch
 from transformers import AutoTokenizer, AutoModel
 from pathlib import Path
 
+from app.eidos_brain.self_awareness.lia_model.Downloader import verificar_o_descargar_modelo
+
+
 # Cargar tokenizador y modelo base
 MODEL_PATH = "app/eidos_brain/self_awareness/lia_model/lia_model_GRSCUP_v1.pth"
 tokenizer = AutoTokenizer.from_pretrained("distilbert-base-uncased")
@@ -23,6 +26,7 @@ class LíaModel(nn.Module):
         return self.classifier(cls_output)
 
 # Cargar modelo entrenado
+verificar_o_descargar_modelo() 
 model = LíaModel()
 model.load_state_dict(torch.load(MODEL_PATH, map_location=torch.device('cpu')))
 model.eval()

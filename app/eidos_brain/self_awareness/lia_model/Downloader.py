@@ -1,7 +1,7 @@
 import os
 import requests
 
-MODEL_PATH = "app/eidos_brain/self_awareness/lia_model/lia_model.pth"
+MODEL_PATH = "app/eidos_brain/self_awareness/lia_model/lia_model_GRSCUP_v1.pth"
 GOOGLE_FILE_ID = "1NC6hZW01qYsrYaQuPqH_xjbup6lrddmD"
 MODEL_URL = f"https://drive.google.com/uc?id={GOOGLE_FILE_ID}&export=download"
 
