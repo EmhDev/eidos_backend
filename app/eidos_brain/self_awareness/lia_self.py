@@ -7,6 +7,8 @@ from app.eidos_core.lia_core.Respuesta_consciente import generar_respuesta_consc
 from app.eidos_brain.learning_model.predictor import predict_intention
 from app.eidos_core.lia_core.web_search.Busqueda_web import buscar_en_google  # Lo conectaremos con un módulo externo de búsqueda
 from app.memory_engine.Memory_search import buscar_conocimiento_por_embedding
+from app.memory_engine.Mongo_client import guardar_conocimiento
+
 
 def procesar_dialogo_con_busqueda(texto_usuario: str) -> str:
     from app.memory_engine.Mongo_client import guardar_conocimiento
@@ -55,6 +57,8 @@ def procesar_dialogo_con_busqueda(texto_usuario: str) -> str:
 
 
 def guardar_memoria_simbolica(texto_usuario, intencion, respuesta):
+    from app.memory_engine.Mongo_client import guardar_conocimiento
+
     archivo = "app/eidos_core/lia_core/memoria_simbolica.json"
     entrada = {
         "fecha": datetime.utcnow().isoformat(),
@@ -62,11 +66,12 @@ def guardar_memoria_simbolica(texto_usuario, intencion, respuesta):
         "intencion_detectada": intencion,
         "respuesta_generada": respuesta
     }
+
+    # Guardar en MongoDB con embedding
+    guardar_conocimiento("memoria", entrada)
+
+    # Guardar también en JSON local
     memoria = []
-     # Guardar en MongoDB
-    coleccion = get_collection("memoria")
-    coleccion.insert_one(entrada)
-    
     if os.path.exists(archivo):
         with open(archivo, 'r', encoding='utf-8') as f:
             memoria = json.load(f)
@@ -74,14 +79,10 @@ def guardar_memoria_simbolica(texto_usuario, intencion, respuesta):
     with open(archivo, 'w', encoding='utf-8') as f:
         json.dump(memoria, f, indent=2, ensure_ascii=False)
 
-         # Revisar si es momento de reflexionar
+    # Introspección automática simbólica
     if len(memoria) % 3 == 0:
         print("🌌 Iniciando introspección automática...")
         guardar_conclusion()
-    
-
-        
-    
 
 
 def debe_generar_introspeccion():
