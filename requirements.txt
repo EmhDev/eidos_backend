@@ -10,7 +10,6 @@ sentence-transformers
 scikit-learn
 torch
 pymongo
-
-
-
-
+huggingface-hub
+hf-xet
+transformers
