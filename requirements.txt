@@ -7,6 +7,10 @@ gTTS==2.3.2
 python-dotenv
 openai
 sentence-transformers
+scikit-learn
+torch
+pymongo
+
 
 
 

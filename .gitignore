@@ -1,53 +1,67 @@
-# Entornos virtuales
+# 🧠 Entornos virtuales
 .venv/
 venv/
 ENV/
 env/
 
-# Archivos de Python
+# 🐍 Archivos de Python
 __pycache__/
 *.py[cod]
 *.pyo
 *.pyd
 
-# Archivos de configuración y logs
-*.log
+# ⚙️ Configuración y variables de entorno
 *.env
 .env.*
 config.ini
 
-# IDEs
+# 📝 Logs
+*.log
+
+# 💻 IDEs y proyectos de editores
 .vscode/
 .idea/
 *.sublime-workspace
 *.sublime-project
 
-# Archivos del sistema
+# 🧹 Archivos del sistema
 .DS_Store
 Thumbs.db
 
-# Cachés
+# 🔄 Cachés y metadatos temporales
 *.egg-info/
 .eggs/
 .cache/
 *.bak
 
-# Archivos de tests y cobertura
+# 🧪 Testing y cobertura
 htmlcov/
 .tox/
 coverage.xml
 .nox/
 .pytest_cache/
 
-# Archivos de construcción
+# 🔧 Archivos de construcción de proyectos
 build/
 dist/
 
-# Mongo dumps
+# 🗃️ MongoDB dumps (si se exporta la DB)
 dump/
 
-# Archivos de Render u otros servicios temporales
+# 🚀 Render o despliegue
 render.yaml
 
-# Aprendizaje autónomo
+# 🤖 Aprendizaje automático / modelos
 learning_queue.json
+*.pth
+*.pt
+*.h5
+*.joblib
+*.pkl
+*.pickle
+
+# 🧠 Modelos guardados por Lía
+app/eidos_brain/self_awareness/lia_model/lia_model.pth
+
+# 🌍 HuggingFace
+.huggingface/
