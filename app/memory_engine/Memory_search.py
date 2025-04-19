@@ -2,8 +2,8 @@
 
 from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
-from app.memory_engine.mongo_client import db
-from app.memory_engine.embedding_manager import generar_embedding
+from app.memory_engine.Mongo_client import db
+from app.memory_engine.embedding.Embedding_manager import generar_embedding
 
 def buscar_conocimiento_por_embedding(texto_usuario: str, collection_name="memoria_simbolica_mongo"):
     coleccion = db[collection_name]

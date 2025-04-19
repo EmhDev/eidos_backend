@@ -1,3 +1,4 @@
+#app\eidos_core\lia_core\web_search\Search_OpenIA.py
 import os
 import openai
 from dotenv import load_dotenv

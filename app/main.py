@@ -1,8 +1,15 @@
 # app/main.py
+
+import os
+from dotenv import load_dotenv
+load_dotenv()  # ⬅️ Esto debe ir primero, antes de todo
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.api.routes import router
 from app.config import settings
+
+from app.api.routes import router
 
 app = FastAPI()
 

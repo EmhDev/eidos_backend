@@ -6,16 +6,13 @@ from datetime import datetime
 from app.eidos_core.lia_core.Respuesta_consciente import generar_respuesta_consciente
 from app.eidos_brain.learning_model.predictor import predict_intention
 from app.eidos_core.lia_core.web_search.Busqueda_web import buscar_en_google  # Lo conectaremos con un módulo externo de búsqueda
-from app.memory_engine.memory_search import buscar_conocimiento_por_embedding
-
-
-
+from app.memory_engine.Memory_search import buscar_conocimiento_por_embedding
 
 def procesar_dialogo_con_busqueda(texto_usuario: str) -> str:
-    from app.memory_engine.mongo_client import guardar_conocimiento
-    from app.eidos_core.lia_core.web_search.Puente_OpenAI import consultar_openai
-    from app.memory_engine.memory_search import buscar_conocimiento_por_embedding
-    from app.eidos_core.lia_core.Embeddings_local import generate_insight, guardar_conclusion  # Asegúrate que estén accesibles aquí o importalos directo
+    from app.memory_engine.Mongo_client import guardar_conocimiento
+    from app.eidos_core.lia_core.web_search.Search_OpenIA import consultar_openai
+    from app.memory_engine.Memory_search import buscar_conocimiento_por_embedding
+    from app.memory_engine.embedding.Embedding_manager import generate_insight, guardar_conclusion  # Asegúrate que estén accesibles aquí o importalos directo
 
     intencion = predict_intention(texto_usuario)
     respuesta = generar_respuesta_consciente(texto_usuario)
