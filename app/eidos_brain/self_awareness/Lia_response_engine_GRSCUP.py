@@ -3,17 +3,16 @@
 import torch
 from transformers import AutoTokenizer, AutoModel
 from pathlib import Path
+import torch.nn as nn
 
 from app.eidos_brain.self_awareness.lia_model.Downloader import verificar_o_descargar_modelo
 
-
-# Cargar tokenizador y modelo base
+# 📜 Configuración del modelo
 MODEL_PATH = "app/eidos_brain/self_awareness/lia_model/lia_model_GRSCUP_v1.pth"
 tokenizer = AutoTokenizer.from_pretrained("distilbert-base-uncased")
 bert_model = AutoModel.from_pretrained("distilbert-base-uncased")
 
-# Clase del modelo entrenado
-import torch.nn as nn
+# 🧠 Clase de la red neuronal de Lía
 class LíaModel(nn.Module):
     def __init__(self):
         super().__init__()
@@ -25,14 +24,20 @@ class LíaModel(nn.Module):
         cls_output = outputs.last_hidden_state
         return self.classifier(cls_output)
 
-# Cargar modelo entrenado
-verificar_o_descargar_modelo() 
-model = LíaModel()
-model.load_state_dict(torch.load(MODEL_PATH, map_location=torch.device('cpu')))
-model.eval()
+# 💤 Lazy Loading
+model = None
 
-# Generar respuesta a partir de entrada de texto
 def generar_respuesta_lia(texto_usuario: str) -> str:
+    global model
+    if model is None:
+        print("📥 Cargando modelo neuronal de Lía por primera vez...")
+        verificar_o_descargar_modelo()
+        model_instancia = LíaModel()
+        model_instancia.load_state_dict(torch.load(MODEL_PATH, map_location=torch.device('cpu')))
+        model_instancia.eval()
+        model = model_instancia
+        print("✅ Modelo cargado correctamente.")
+
     entrada = tokenizer(texto_usuario, padding="max_length", truncation=True, max_length=32, return_tensors="pt")
     with torch.no_grad():
         output = model(entrada["input_ids"], entrada["attention_mask"])
