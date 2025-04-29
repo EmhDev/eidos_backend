@@ -10,7 +10,7 @@ from app.eidos_brain.training.Retraining_model import LiaModel
 verificar_o_descargar_modelo()
 
 # Paso 2: Definir ruta del modelo
-MODEL_PATH = "/home/liaadmin/Desktop/EIDOS_PROJECT/lia_model_red_neuronal/lia_model.pth"
+MODEL_PATH = "app/eidos_brain/self_awareness/lia_model/lia_model.pth"
 
 # Paso 3: Validar existencia del modelo
 if not os.path.exists(MODEL_PATH):
