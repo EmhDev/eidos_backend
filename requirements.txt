@@ -8,8 +8,8 @@ python-dotenv
 openai
 sentence-transformers
 scikit-learn
-torch
 pymongo
-huggingface-hub
 hf-xet
+huggingface-hub
 transformers
+torch==2.7.0
