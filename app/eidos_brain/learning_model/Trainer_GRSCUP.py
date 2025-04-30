@@ -11,7 +11,7 @@ from pathlib import Path
 #GRSCUP
 
 # 📘 Ruta del dataset
-DATASET_PATH = "app/eidos_brain/learning_model/dataset/lia_datasetV3.json"
+DATASET_PATH = "app/eidos_brain/learning_model/dataset/lia_dataset_V3.json"
 MODEL_SAVE_PATH = "app/eidos_brain/self_awareness/lia_model/lia_model_GRSCUP_v2.pth"
 
 # 🧠 Tokenizador y modelo base
