@@ -32,10 +32,8 @@ def generar_respuesta_lia(texto_usuario: str) -> str:
     if model is None:
         print("📥 Cargando modelo neuronal de Lía por primera vez...")
         verificar_o_descargar_modelo()
-        model_instancia = LíaModel()
-        model_instancia.load_state_dict(torch.load(MODEL_PATH, map_location=torch.device('cpu')))
-        model_instancia.eval()
-        model = model_instancia
+        model = torch.load(MODEL_PATH, map_location=torch.device('cpu'), weights_only=False)
+        model.eval()
         print("✅ Modelo cargado correctamente.")
 
     entrada = tokenizer(texto_usuario, padding="max_length", truncation=True, max_length=32, return_tensors="pt")
