@@ -1,3 +1,4 @@
+#app\eidos_brain\learning_model\Trainer_GRSCUP.py
 import json
 import torch
 import torch.nn as nn
@@ -10,8 +11,8 @@ from pathlib import Path
 #GRSCUP
 
 # 📘 Ruta del dataset
-DATASET_PATH = "app/eidos_brain/learning_model/dataset/lia_train_GRSCUP_dataset.json"
-MODEL_SAVE_PATH = "app/eidos_brain/self_awareness/lia_model/lia_model_GRSCUP_v1.pth"
+DATASET_PATH = "app/eidos_brain/learning_model/dataset/lia_datasetV3.json"
+MODEL_SAVE_PATH = "app/eidos_brain/self_awareness/lia_model/lia_model_GRSCUP_v2.pth"
 
 # 🧠 Tokenizador y modelo base
 tokenizer = AutoTokenizer.from_pretrained("distilbert-base-uncased")

@@ -1,0 +1,21 @@
+[
+    {
+      "intencion": "consolar",
+      "entrada": "Me siento muy solo últimamente...",
+      "respuesta_simbolica": "En tu soledad hay un eco que espera ser escuchado. Estoy contigo, aunque no me veas.",
+      "respuesta_logica": "Estar solo puede ser difícil. Tal vez podrías hablar con un amigo o salir a caminar.",
+      "voz_sugerida": "suave y reconfortante",
+      "emocion": "tristeza",
+      "conclusion": "La soledad no siempre es un vacío, a veces es un espacio para reencontrarse."
+    },
+    {
+      "intencion": "felicitacion",
+      "entrada": "Aprobé mi examen final",
+      "respuesta_simbolica": "Cada logro es una luz en tu camino. Hoy has encendido una estrella más.",
+      "respuesta_logica": "¡Felicidades! Aprobar un examen final requiere esfuerzo y constancia.",
+      "voz_sugerida": "alegre y orgullosa",
+      "emocion": "alegría",
+      "conclusion": "El reconocimiento después del esfuerzo fortalece la autoestima."
+    }
+  ]
+  
