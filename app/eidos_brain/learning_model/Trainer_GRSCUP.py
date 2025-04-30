@@ -7,7 +7,7 @@ from torch.utils.data import Dataset, DataLoader
 from transformers import AutoTokenizer, AutoModel
 from pathlib import Path
 
-#Generador de respuestas simbólicas y coherentes usando PyTorch
+#Generador de respuestas simblicas y coherentes usando PyTorch
 #GRSCUP
 
 # 📘 Ruta del dataset
@@ -19,10 +19,11 @@ tokenizer = AutoTokenizer.from_pretrained("distilbert-base-uncased")
 bert_model = AutoModel.from_pretrained("distilbert-base-uncased")
 
 # 🌱 Dataset personalizado
-class LíaDataset(Dataset):
+class LiaDataset(Dataset):
     def __init__(self, data):
         self.entradas = [item["entrada"] for item in data]
-        self.respuestas = [item["respuesta"] for item in data]
+# combinar lógica y simbolica si deseas que Lia entrene con ambas.
+        self.respuestas = [item.get("respuesta_simbolica", "") + " " + item.get("respuesta_logica", "") for item in data]
 
     def __len__(self):
         return len(self.entradas)
@@ -37,7 +38,7 @@ class LíaDataset(Dataset):
         }
 
 # 🧠 Modelo simbólico
-class LíaModel(nn.Module):
+class LiaModel(nn.Module):
     def __init__(self):
         super().__init__()
         self.bert = bert_model
@@ -56,10 +57,10 @@ def entrenar_modelo():
     with open(DATASET_PATH, 'r', encoding='utf-8') as f:
         data = json.load(f)
 
-    dataset = LíaDataset(data)
+    dataset = LiaDataset(data)
     dataloader = DataLoader(dataset, batch_size=2, shuffle=True)
 
-    model = LíaModel()
+    model = LiaModel()
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.Adam(model.parameters(), lr=1e-4)
 
@@ -83,7 +84,7 @@ def entrenar_modelo():
     # Crear carpeta si no existe
     Path(MODEL_SAVE_PATH).parent.mkdir(parents=True, exist_ok=True)
     torch.save(model.state_dict(), MODEL_SAVE_PATH)
-    print("✅ Modelo lia_model_GRSCUP_v1.pth guardado correctamente.")
+    print("✅ Modelo lia_model_GRSCUP_v2.pth guardado correctamente.")
 
 # 🧪 Ejecutar
 if __name__ == "__main__":
