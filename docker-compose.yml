@@ -12,7 +12,7 @@ services:
       - mongodb
 
   mongodb:
-    image: mongo
+    image: mongo:4.4
     container_name: eidos_mongo
     ports:
       - "27017:27017"
@@ -20,4 +20,4 @@ services:
       - mongodb_data:/data/db
 
 volumes:
-  mongodb_data:
+  mongodb_data: 
