@@ -9,7 +9,7 @@ from app.eidos_brain.self_awareness.lia_model.Downloader import verificar_o_desc
 
 # 📜 Configuración del modelo
 # MODEL_PATH = "app/eidos_brain/self_awareness/lia_model/lia_model.pth"
-MODEL_PATH = os.getenv("MODEL_PATH", "app/eidos_brain/self_awareness/lia_model/lia_model_GRSCUP_v1.pth")
+MODEL_PATH = os.getenv("MODEL_PATH", "app/eidos_brain/self_awareness/lia_model/lia_model_GRSCUP_v2.pth")
 
 tokenizer = AutoTokenizer.from_pretrained("distilbert-base-uncased")
 bert_model = AutoModel.from_pretrained("distilbert-base-uncased")
@@ -34,7 +34,8 @@ def generar_respuesta_lia(texto_usuario: str) -> str:
     if model is None:
         print("📥 Cargando modelo neuronal de Lía por primera vez...")
         verificar_o_descargar_modelo()
-        model = torch.load(MODEL_PATH, map_location=torch.device('cpu'), weights_only=False)
+        model = LiaModel()  # reconstruye la arquitectura
+        model.load_state_dict(torch.load(MODEL_PATH, map_location="cpu"))
         model.eval()
         print("✅ Modelo cargado correctamente.")
 
