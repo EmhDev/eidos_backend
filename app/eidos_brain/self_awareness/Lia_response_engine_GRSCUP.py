@@ -11,8 +11,8 @@ from app.eidos_brain.self_awareness.lia_model.Downloader import verificar_o_desc
 # MODEL_PATH = "app/eidos_brain/self_awareness/lia_model/lia_model.pth"
 MODEL_PATH = os.getenv("MODEL_PATH", "app/eidos_brain/self_awareness/lia_model/lia_model_GRSCUP_v2.pth")
 
-tokenizer = AutoTokenizer.from_pretrained("distilbert-base-uncased")
-bert_model = AutoModel.from_pretrained("distilbert-base-uncased")
+tokenizer = AutoTokenizer.from_pretrained("dccuchile/bert-base-spanish-wwm-uncased")
+bert_model = AutoModel.from_pretrained("dccuchile/bert-base-spanish-wwm-uncased")
 
 # 🧠 Clase de la red neuronal de Lía
 class LiaModel(nn.Module):
